@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>案例</title>
+
+        <link rel="stylesheet" type="text/css" href="/statics/css/common.css" />
+        <link rel="stylesheet" type="text/css" href="/statics/css/bootstrap.min.css" />
+        <script src="/statics/js/jquery.min.js"></script>
+        <script src="/statics/js/bootstrap.min.js"></script>
+
+    </head>
+
+    <body>
+        <div id="wrap">
+            <!-- 左侧菜单栏目块 -->
+            <div class="leftMeun" id="leftMeun">
+                <div id="logoDiv">
+                                分类查询
+                </div>
+               <div class="meun-title"> <a href="/queryfile?classify=语文">语文</a></div>
+                <div class="meun-title"><a href="/queryfile?classify=数学">数学</a></div>
+                <div class="meun-title"><a href="/queryfile?classify=物理">物理</a></div>
+                <div class="meun-title"><a href="/queryfile?classify=英语">英语</a></div>
+            </div>
+            <!-- 右侧具体内容栏目 -->
+            <div id="rightContent">
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <!-- 资源管理模块 -->
+                    <div role="tabpanel" class="tab-pane active" id="sour">
+                        <div class="check-div form-inline">
+                            <a href="/fileview" class="btn btn-yellow btn-xs" data-toggle="modal">首页</a>
+{#                             <button class="btn btn-yellow btn-xs" data-toggle="modal" onclick="openwin()">搜索</button>#}
+                               <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#myModal">
+                                   搜索
+                               </button>
+                        </div>
+{#                         按条件搜索模态框#}
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                       <div class="modal-dialog">
+                          <div class="modal-content">
+                             <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    ×
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                   搜索
+                                </h4>
+                             </div>
+                              <form method="post" action="/keyQuery">
+                             <div class="modal-body">
+                                 {% csrf_token %}
+                                 <input type="text" placeholder="请输入关键字" name="keyvalue">
+                             </div>
+                             <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    关闭
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                   点击搜索
+                                </button>
+                             </div>
+                              </form>
+                          </div><!-- /.modal-content -->
+                       </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <div class="data-div">
+
+                            <div class="tablebody">
+                                {% for i,n in data %}
+                                <div class="row">
+
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" role="button">
+                                        <a href="/statics/js/PDFJSInNet/PDFJSInNet/web/viewer.html?file=../../../../filepath/{{ i }}" target="_blank"> {{ i }} </a>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                       {{ n }}
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                <a href="/filedown?name={{ i }}" class="btn btn-success btn-xs"  >下载</a>
+                                            </div>
+                                </div>
+                                 {% endfor %}
+                                <div class="pagination">
+                                    <span class="step-links">
+                                    {% if data.has_previous %}
+                                    <a href="?page={{ data.previous_page_number }}">前一页</a>
+                                    {% endif %}
+                                    <span class="current">
+                                    Page {{ data.number }} of {{ data.paginator.num_pages }}.
+                                    </span>
+                                    {% if data.has_next %}
+                                    <a href="?page={{ data.next_page_number }}">下一页</a>
+                                    {% endif %}
+                                    </span>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/statics/js/jquery.nouislider.js"></script>
+
+</body>
+
+</html>
+<script>
+   $(function () { $('#myModal').modal({
+      keyboard: true,
+       show:false
+   })});
+</script>

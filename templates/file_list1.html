@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div1{
+            margin: auto;
+            text-align: center;
+        }
+        .div2{
+            display: inline-block;
+            margin-left: 1200px;
+        }
+        .div3{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="div3">
+    <a href="fileviw">首页</a>
+</div>
+<div class="div2">
+    <p>分类查找</p>
+    <form action="queryfile" method="post">
+        {% csrf_token %}
+        <select name="classify">
+            <option value="语文">语文</option>
+            <option value="物理">物理</option>
+            <option value="数学">数学</option>
+        </select>
+        <input type="submit" value="查询">
+    </form>
+</div>
+
+<div class="div1">
+{% for i in data %}
+      <a href="/statics/js/PDFJSInNet/PDFJSInNet/web/viewer.html?file=../../../../filepath/{{ i }}">{{ i }}</a><br>
+{% endfor %}
+</div>
+
+</body>
+</html>
