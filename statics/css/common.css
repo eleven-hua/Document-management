@@ -180,8 +180,9 @@ body {
 .tablebody .row {
 	margin-top: 10px;
 	background-color: #fff;
-	height: 70px;
-	line-height: 70px;
+	/*height: 70px;*/
+	height: 30px;
+	line-height: 30px;
 }
 .footer {
 	float: right;

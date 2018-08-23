@@ -30,4 +30,7 @@ urlpatterns = [
     url(r'^loginVerify$',views.loginVerify),
     url(r'^filedown$',views.filedown),
     url(r'^keyQuery$',views.keyQuery),
+    url(r'deletefile$',views.deletefile),
+    # url(r'^verifyuser$',views.verifyuser),
+    url(r'^logoutuser$',views.logoutuser)
 ]

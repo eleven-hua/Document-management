@@ -2,6 +2,7 @@
 <html lang="en">
 
     <head>
+        <meta charset="UTF-8">
         <title>案例</title>
 
         <link rel="stylesheet" type="text/css" href="/statics/css/common.css" />
@@ -11,7 +12,7 @@
 
     </head>
 
-    <body>
+    <body >
         <div id="wrap">
             <!-- 左侧菜单栏目块 -->
             <div class="leftMeun" id="leftMeun">
@@ -37,7 +38,7 @@
                                    搜索
                                </button>
                         </div>
-{#                         按条件搜索模态框#}
+                        <!--按条件搜索模态框-->
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                        <div class="modal-dialog">
                           <div class="modal-content">
@@ -68,20 +69,22 @@
                         </div><!-- /.modal -->
                         <div class="data-div">
 
-                            <div class="tablebody">
+                                <div class="tablebody">
                                 {% for i,n in data %}
-                                <div class="row">
-
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" role="button">
+                               <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" role="button" style="width: auto;">
                                         <a href="/statics/js/PDFJSInNet/PDFJSInNet/web/viewer.html?file=../../../../filepath/{{ i }}" target="_blank"> {{ i }} </a>
-                                    </div>
-                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                   </div>
+                                   <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="width: auto;position: absolute;left: 80%;">
                                        {{ n }}
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                  </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="width: auto;position: absolute;left: 90%;">
                                                 <a href="/filedown?name={{ i }}" class="btn btn-success btn-xs"  >下载</a>
-                                            </div>
+                                        {% if user %}
+                                        <a href="/deletefile?filename={{ i }}" class="btn btn-success btn-xs" onclick="return confirm('确认删除吗？')">删除</a>
+                                        {% endif %}
+
+                                    </div>
                                 </div>
                                  {% endfor %}
                                 <div class="pagination">
@@ -116,4 +119,23 @@
       keyboard: true,
        show:false
    })});
+   {% comment %}function deletefile() {
+       console.log("deletefile")
+       $.ajax({
+           type:"get",
+           url:"/verifyuser",
+           success:function (date) {
+               if (date.result){
+                   console.log(date.result)
+                   document.getElementById("delete").style.visibility="hidden";
+                   $("#deletefile").hide()
+               }else {
+                   console.log(date.result)
+                   console.log("我在else中")
+               }
+
+           }
+
+       })
+   }{% endcomment %}
 </script>
