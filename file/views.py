@@ -15,9 +15,6 @@ import re
 # Create your views here.
 
 
-
-
-
 #跳到上传文件页面
 @login_required
 def index(request):
@@ -108,7 +105,8 @@ def fileview(request):
     #     contacts = paginator.page(1)
     # except EmptyPage:
     #     contacts = paginator.page(paginator.num_pages)
-    if request.user.is_authenticated():#判断用户是否登录
+    print(request.user.is_authenticated)
+    if request.user.is_authenticated:#判断用户是否登录
         Islogin = True
     else:
         Islogin = False
@@ -137,7 +135,7 @@ def keyQuery(request):
     Fnametime.reverse()
     contacts = paging(request,Fnametime)
     print(nametime)
-    if request.user.is_authenticated():  # 判断用户是否登录
+    if request.user.is_authenticated:  # 判断用户是否登录
         Islogin = True
     else:
         Islogin = False
@@ -154,7 +152,7 @@ def queryfile(request):
     Fnametime = list(nametime.items())#将字典转换成items()组成的列表
     Fnametime.reverse()#列表反转
     contacts = paging(request,Fnametime)#分页
-    if request.user.is_authenticated():  # 判断用户是否登录
+    if request.user.is_authenticated:  # 判断用户是否登录
         Islogin = True
     else:
         Islogin = False
@@ -223,4 +221,3 @@ def paging(request,Fnametime):
     except EmptyPage:
         contacts = paginator.page(paginator.num_pages)
     return contacts
-
