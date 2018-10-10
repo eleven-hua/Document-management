@@ -76,7 +76,13 @@
            processData:false,
            contentType:false,
            success:function (data) {
-               document.getElementById('result').innerHTML=data.result
+
+               {#document.getElementById('result').innerHTML=data.result#}
+               alert(data.result)
+               {#confirm(data.result)#}
+               {#prompt(data.result)#}
+               <!--上面这三个都可以做弹框-->
+               {#swal(data.result)#}
            },
        })
    }
