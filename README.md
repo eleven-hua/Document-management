@@ -3,12 +3,11 @@
 
 这是一个简易的文件管理系统，支持在线打开PDF文件，需要上传PDF到服务器上，且只支持上传PDF文件。
 使用的技术为Django+PDF.js。
-
-使用者下载项目到本地，配置好环境后，需创建一个账户用于登录。
 ![login.PNG](https://raw.githubusercontent.com/jsonhua1111/images/master/images/login.PNG)
-
+使用者下载项目到本地，配置好环境后，需创建一个账户用于登录。
+![upload.PNG](https://raw.githubusercontent.com/jsonhua1111/images/master/images/upload.PNG)
 物理，语文，数学，英语为测试方便，使用者可以自行修改。
-
+![view.PNG](https://raw.githubusercontent.com/jsonhua1111/images/master/images/view.PNG)
 此页面提供分类，以及关键字模糊查询。
 删除：此处可以判断是否管理员登录，如果管理员登录则会出现删除，一般用户登录不会出现。
 
