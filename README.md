@@ -5,7 +5,7 @@
 使用的技术为Django+PDF.js。
 
 使用者下载项目到本地，配置好环境后，需创建一个账户用于登录。
-
+![login.PNG](https://raw.githubusercontent.com/jsonhua1111/images/master/images/login.PNG)
 
 物理，语文，数学，英语为测试方便，使用者可以自行修改。
 
